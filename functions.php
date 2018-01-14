@@ -68,29 +68,37 @@ new StarterSite();
 /**
  * SHIT STUFF
  */
+function shit_content_wrap($content, $tag='div', $class='content') {
+    return sprintf(
+        '<%s class="%s">%s</%s>',
+        $tag, $class, $content, $tag
+    );
+}
+
+function shit_sign_off_present($content, $breaker="—") {
+    preg_match("/$breaker\w+/", $content, $signOff);
+    return count($signOff) > 0;
+}
+
 function shit_content($post, $breaker="—") {
     $content = $post->content;
 
-    preg_match_all("/$breaker\w+/", $content, $signOff);
-    $signOffPresent = count($signOff[0]) > 0;
-
-    if (!$signOffPresent) {
-        return '<div class="content">' . $content . '</div>';
+    if (!shit_sign_off_present($content, $breaker)) {
+        return shit_content_wrap($content);
     }
 
-    $split = preg_split("/($breaker\w+)/s", $content, -1, PREG_SPLIT_DELIM_CAPTURE);
-    $split = array_filter($split);
-
     $output = '';
-    for ($x = 0; $x < count($split); $x += 2) {
-        // removes extra spacing issues at the end of posts
-        if (count($split) - $x < 2) break;
-        $output .= '<div class="content">';
-        $output .= $split[$x];
-        $output .= '<span class="author">';
-        $output .= $split[$x + 1];
-        $output .= '</span>';
-        $output .= '</div>';
+    while (shit_sign_off_present($content, $breaker)) {
+        list($partial, $signOff, $content) = preg_split("/($breaker\w+(?:.*?>))/s", $content, 2, PREG_SPLIT_DELIM_CAPTURE);
+        $output .= (
+            shit_content_wrap(
+                $partial . shit_content_wrap($signOff, 'span', 'author')
+            )
+        );
+    }
+
+    if (strlen(trim($content))) {
+        $output .= shit_content_wrap($content);
     }
 
     return $output;

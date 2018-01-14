@@ -245,10 +245,6 @@ article.post div.content:last-child,
 article.post div.details:last-child {
   margin-bottom: 0;
 }
-article.post div.content:empty,
-article.post div.details:empty {
-  display: none;
-}
 article.post div.content p,
 article.post div.details p {
   margin: 0 0 0.5em 0;
@@ -256,10 +252,6 @@ article.post div.details p {
 article.post div.content p:last-child,
 article.post div.details p:last-child {
   margin-bottom: 0;
-}
-article.post div.content p:empty,
-article.post div.details p:empty {
-  display: none;
 }
 article.post div.content span.author {
   display: block;

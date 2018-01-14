@@ -29,7 +29,9 @@
             {% endif %}
             {{ post.date('F jS') }} {{ post.date('H:i') }}
         </div>
-        {{ function('sharing_display', '', true) }}
+        {% if (function('function_exists', 'sharing_display')) %}
+            {{ function('sharing_display', '', true) }}
+        {% endif %}
     </div>
 </article>
 {% endblock %}
