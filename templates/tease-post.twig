@@ -1,0 +1,28 @@
+{% extends "tease.twig" %}
+
+{% block content %}
+
+{% set shit = 'Shit' in post.categories %}
+
+<article class="post" id="{{ post.slug }}">
+    <a href="{{ post.link }}">
+        <div class="splash tease {{ post.get_field('splash_class') }}">
+            {% if post.thumbnail.src %}
+                <div class="splash_image" style="background-image: url('{{ post.thumbnail.src('large') }}');"></div>
+            {% endif %}
+            <h1 class="title">
+                {{ post.title }}
+            </h1>
+
+            {% if shit %}
+            <h1 class="rating shit">
+                Shit
+            {% else %}
+            <h1 class="rating not-shit">
+                Not shit
+            {% endif %}
+            </h1>
+        </div>
+    </a>
+</article>
+{% endblock %}
