@@ -198,7 +198,10 @@ article.post {
     align-items: stretch;
     text-align: justify;
     overflow: hidden;
-    box-shadow: 0 1px 3px fade(@black, 12.5%), 0 1px 2px fade(@black, 25%);
+
+    &.tease, div.content, div.details {
+        box-shadow: 0 1px 3px fade(@black, 12.5%), 0 1px 2px fade(@black, 25%);
+    }
 
     &:last-child {
         margin-bottom: 0;
@@ -375,7 +378,11 @@ div.pagination-block {
 }
 
 div.sharedaddy {
-    ul, li {
+    ul {
         margin: 0 !important;
+    }
+
+    li {
+        margin: 0 0 0 0.25em !important;
     }
 }

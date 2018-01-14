@@ -161,6 +161,10 @@ article.post {
   align-items: stretch;
   text-align: justify;
   overflow: hidden;
+}
+article.post.tease,
+article.post div.content,
+article.post div.details {
   box-shadow: 0 1px 3px rgba(23, 29, 28, 0.125), 0 1px 2px rgba(23, 29, 28, 0.25);
 }
 article.post:last-child {
@@ -314,7 +318,9 @@ div.pagination-block li:not(.btn).current:after {
   height: 3px;
   bottom: -1px;
 }
-div.sharedaddy ul,
-div.sharedaddy li {
+div.sharedaddy ul {
   margin: 0 !important;
+}
+div.sharedaddy li {
+  margin: 0 0 0 0.25em !important;
 }
