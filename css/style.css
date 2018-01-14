@@ -52,10 +52,10 @@ header#header:before {
   position: absolute;
   z-index: 0;
   background-color: #171D1C;
-  left: -5em;
-  right: -5em;
+  left: 0;
+  right: 0;
   bottom: -5em;
-  height: 5em;
+  height: 6em;
   box-shadow: 0 0 1em rgba(23, 29, 28, 0.5);
 }
 html,
