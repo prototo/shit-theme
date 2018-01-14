@@ -10,8 +10,16 @@
 
 @media screen and (max-width: 568px) {
     article.post {
+        div.splash.tease {
+            min-height: 10em;
+        }
+
         div.content, div.details {
             padding: 1em 1.25em;
+        }
+
+        h1.title, h1.rating {
+            font-size: 1.5em;
         }
     }
 
@@ -19,16 +27,21 @@
         h1 {
             font-size: 3em;
         }
-        h2 {
-            font-size: 1em;
-        }
     }
 }
 
 @media screen and (min-width: 569px) {
     article.post {
+        div.splash.tease {
+            min-height: 15em;
+        }
+
         div.content, div.details {
             padding: 1em 1.5em;
+        }
+
+        h1.title, h1.rating {
+            font-size: 2em;
         }
     }
 
@@ -36,26 +49,37 @@
         h1 {
             font-size: 4em;
         }
-        h2 {
-            font-size: 1.5em;
-        }
     }
 }
 
-@media screen and (min-width: 768px) {
-    @overhang: 5em;
-
-    header#header:before {
-        content: "";
-        position: absolute;
-        z-index: 0;
-        background-color: @black;
-        left: -5em;
-        right: -5em;
-        bottom: @overhang * -1;
-        height: @overhang;
-        box-shadow: 0 0 1em fade(@black, 50%);
+@media screen and (max-width: 784px) { // 768px) {
+    section#body {
+        margin: auto;
     }
+    article.post {
+        padding: 0 8px;
+    }
+}
+@media screen and (min-width: 785px) { // 768px) {
+    section#body {
+        margin: auto;
+    }
+    article.post {
+        padding: 0;
+    }
+}
+
+header#header:before {
+    @overhang: 5em;
+    content: "";
+    position: absolute;
+    z-index: 0;
+    background-color: @black;
+    left: -5em;
+    right: -5em;
+    bottom: @overhang * -1;
+    height: @overhang;
+    box-shadow: 0 0 1em fade(@black, 50%);
 }
 
 html, body {
@@ -99,6 +123,18 @@ footer#footer {
     padding: 2em 0;
     text-align: center;
     color: @white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &>div {
+        margin: 0 0 8px 0;
+
+        &:last-child {
+            margin: 0;
+        }
+    }
 }
 
 header#header {
@@ -107,7 +143,7 @@ header#header {
     background: @black;
     margin: 0 0 1em 0;
     margin: 0;
-    padding: 4em 0;
+    padding: 3em 0;
 
     h1, h2 {
         width: 100%;
@@ -134,7 +170,6 @@ header#header {
 section#body {
     width: 100%;
     max-width: @page-max;
-    margin: auto;
     position: relative;
     z-index: 2;
 }
@@ -154,8 +189,8 @@ section#content {
 }
 
 article.post {
-    margin: 0;
-    padding: 0;
+    border-radius: 3px;
+    margin: 0.5em 0;
     position: relative;
     width: 100%;
     display: flex;
@@ -163,6 +198,7 @@ article.post {
     align-items: stretch;
     text-align: justify;
     overflow: hidden;
+    box-shadow: 0 1px 3px fade(@black, 12.5%), 0 1px 2px fade(@black, 25%);
 
     &:last-child {
         margin-bottom: 0;
@@ -175,11 +211,7 @@ article.post {
         align-items: center;
         margin: 0;
         position: relative;
-        height: 18em;
-
-        &.tease {
-            height: 15em;
-        }
+        min-height: 18em;
 
         div.splash_image {
             position: absolute;
@@ -220,7 +252,7 @@ article.post {
     }
 
     h1.title {
-        margin: 24px 20px 12px 20px;
+        margin: 24px 20px 8px 20px;
         font-weight: normal;
 
         a {
@@ -229,7 +261,7 @@ article.post {
     }
 
     h1.rating {
-        padding-top: 16px;
+        padding: 8px;
         margin: 0 20px 24px 20px;
 
         &:before {
@@ -257,7 +289,7 @@ article.post {
         &:last-child {
             margin-bottom: 0;
         }
-        
+
         &:empty {
             display: none;
         }
@@ -288,9 +320,9 @@ article.post {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
 
-        div, span, a {
+        &>div {
             margin: 0 0.25em;
         }
 
@@ -339,5 +371,11 @@ div.pagination-block {
         background-color: @black;
         height: 3px;
         bottom: -1px;
+    }
+}
+
+div.sharedaddy {
+    ul, li {
+        margin: 0 !important;
     }
 }

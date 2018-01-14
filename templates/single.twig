@@ -23,15 +23,13 @@
     </div>
     {{ function('shit_content', post) }}
     <div class="details">
-        {% if false %}
-            <div class="avatar" style="background-image: url('{{ post.author.avatar.src('small') }}');"></div>
-        {% endif %}
-        <span>
+        <div>
+            {% if post.edit_link %}
+                <a class="edit" href="{{ post.edit_link }}">edit</a>
+            {% endif %}
             {{ post.date('F jS') }} {{ post.date('H:i') }}
-        </span>
-        {% if post.edit_link %}
-            <a class="edit" href="{{ post.edit_link }}">edit</a>
-        {% endif %}
+        </div>
+        {{ function('sharing_display', '', true) }}
     </div>
 </article>
 {% endblock %}
